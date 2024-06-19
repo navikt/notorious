@@ -10,7 +10,7 @@ from client_lib import quiz_rapid
 # 1. Set `TEAM_NAME` to your preferred team name
 TEAM_NAME = "notorious"
 # 2. Set `HEX_CODE` to your preferred team color
-HEX_CODE = "#40E0D0"
+HEX_CODE = "#40e0d0"
 # ###### #
 
 
