@@ -61,7 +61,7 @@ class MyParticipant(quiz_rapid.QuizParticipant):
         elif op == "+":
             svar = a + b
         elif op == "/":
-            svar = round(a/b)
+            svar = a // b
         else:
             svar = a * b
 
