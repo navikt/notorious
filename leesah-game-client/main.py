@@ -29,6 +29,8 @@ class MyParticipant(quiz_rapid.QuizParticipant):
             self.handle_ping_pong(question)
         elif question.category == "arithmetic":
             self.handle_arithmetic(question)
+        elif question.category == "NAV":
+            self.handle_nav(question)
 
     def handle_assessment(self, assessment: quiz_rapid.Assessment):
         ...
@@ -64,10 +66,19 @@ class MyParticipant(quiz_rapid.QuizParticipant):
             svar = a * b
 
         return self.publish_answer(
-            question_id=question.messageId,
+            questsion_id=question.messageId,
             category=question.category,
             answer=svar
             )
+    
+        
+    def handle_nav(self, question: quiz_rapid.Question):
+        if question.question in SPORS:
+            return self.publish_answer(
+                question_id=question.messageId,
+                category=question.category,
+                answer=SPORS[question]
+                )
 
 
 def main():
