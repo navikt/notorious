@@ -1,7 +1,7 @@
 apiVersion: nais.io/v1alpha1
 kind: Application
 metadata:
-  name: <YOUR_TEAM_NAME> # ENDRE DETTE! Dette vil være navnet på applikasjonen din
+  name: notorious # ENDRE DETTE! Dette vil være navnet på applikasjonen din
   namespace: leesah-quiz
   labels:
     team: leesah-quiz
@@ -15,3 +15,7 @@ spec:
   env:
     - name: QUIZ_TOPIC
       value: leesah-quiz.leesah-rapid-v2
+  observability:
+    logging:
+      destinations:
+        - id: loki
