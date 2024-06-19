@@ -23,7 +23,3 @@ jobs:
           CLUSTER: dev-gcp
           RESOURCE: nais.yaml
           IMAGE: ${{ steps.docker-push.outputs.image }}
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true

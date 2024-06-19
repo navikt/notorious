@@ -15,7 +15,3 @@ spec:
   env:
     - name: QUIZ_TOPIC
       value: leesah-quiz.leesah-rapid-v2
-  observability:
-    logging:
-      destinations:
-        - id: loki

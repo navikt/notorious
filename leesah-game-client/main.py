@@ -35,7 +35,7 @@ class MyParticipant(quiz_rapid.QuizParticipant):
             teamName=TEAM_NAME,
             answer=HEX_CODE
             )
-        
+
 
 
 def main():
