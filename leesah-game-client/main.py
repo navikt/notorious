@@ -1,5 +1,4 @@
 import os
-from math import round 
 
 from client_lib import quiz_rapid
 
@@ -14,6 +13,10 @@ TEAM_NAME = "notorious"
 HEX_CODE = "#40e0d0"
 # ###### #
 
+
+
+SPORS = {"question": "svar",
+         "Hvilken ytelse fra NAV har syke arbeidere i Norge som oftest rett på?": "sykepenger",}
 
 class MyParticipant(quiz_rapid.QuizParticipant):
     def __init__(self):
