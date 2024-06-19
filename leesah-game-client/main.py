@@ -32,7 +32,6 @@ class MyParticipant(quiz_rapid.QuizParticipant):
         return quiz_rapid.Answer(
             questionId=question.messageId,
             category=question.category,
-            teamName=TEAM_NAME,
             answer=HEX_CODE
             )
         
