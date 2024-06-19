@@ -1,4 +1,5 @@
 import os
+from math import round 
 
 from client_lib import quiz_rapid
 
@@ -23,6 +24,8 @@ class MyParticipant(quiz_rapid.QuizParticipant):
             self.handle_register_team(question)
         elif question.category == "ping-pong":
             self.handle_ping_pong(question)
+        elif question.category == "arithmetic":
+            self.handle_arithmetic(question)
 
     def handle_assessment(self, assessment: quiz_rapid.Assessment):
         ...
@@ -45,7 +48,23 @@ class MyParticipant(quiz_rapid.QuizParticipant):
             answer="pong"
             )
 
+    def handle_arithmetic(self, question: quiz_rapid.Question):
+        a, op, b, *_ = question.question.split()
+        a, b = int(a), int(b)
+        if op == "-":
+            svar = a - b
+        elif op == "+":
+            svar = a + b
+        elif op == "/":
+            svar = round(a/b)
+        else:
+            svar = a * b
 
+        return self.publish_answer(
+            question_id=question.messageId,
+            category=question.category,
+            answer=svar
+            )
 
 
 def main():
