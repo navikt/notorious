@@ -29,10 +29,9 @@ class MyParticipant(quiz_rapid.QuizParticipant):
 
     def handle_register_team(self, question: quiz_rapid.Question):
         # Add code here to solve the first question! Hint: Check Readme 😎
-        return quiz_rapid.Answer(
+        return self.publish_answer(
             questionId=question.messageId,
             category=question.category,
-            teamName=TEAM_NAME,
             answer=HEX_CODE
             )
 
