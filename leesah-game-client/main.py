@@ -21,8 +21,8 @@ class MyParticipant(quiz_rapid.QuizParticipant):
     def handle_question(self, question: quiz_rapid.Question):
         if question.category == "team-registration":
             self.handle_register_team(question)
-    #    elif question.category == "ping-pong":
-     #       self.handle_ping_pong(question)
+        elif question.category == "ping-pong":
+            self.handle_ping_pong(question)
 
     def handle_assessment(self, assessment: quiz_rapid.Assessment):
         ...
@@ -32,18 +32,18 @@ class MyParticipant(quiz_rapid.QuizParticipant):
     def handle_register_team(self, question: quiz_rapid.Question):
         # Add code here to solve the first question! Hint: Check Readme 😎
         return self.publish_answer(
-            questionId=question.messageId,
+            question_id=question.messageId,
             category=question.category,
             answer=HEX_CODE
             )
     
-  #  def handle_ping_pong(self, question: quiz_rapid.Question):
+    def handle_ping_pong(self, question: quiz_rapid.Question):
         # Add code here to solve the first question! Hint: Check Readme 😎
-   #     return self.publish_answer(
-    #        questionId=question.messageId,
-     #       category=question.category,
-      #      answer="pong"
-       #     )
+        return self.publish_answer(
+            question_id=question.messageId,
+            category=question.category,
+            answer="pong"
+            )
 
 
 
