@@ -1,1 +1,35 @@
 # FYLL UT DENNE MED EKSEMPLET I DOCS'A
+on: [push]
+
+jobs:
+  build_and_push:
+    permissions:
+      contents: "read"
+      id-token: "write"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+      - name: test and build
+        run: gradle build
+      - uses: nais/docker-build-push@v0
+        id: docker-push
+        with:
+          team: leesah-quiz
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
+          
+      - name: Deploy
+        uses: nais/deploy/actions/deploy@v2
+        env:
+          CLUSTER: dev-gcp
+          RESOURCE: nais.yaml
+          IMAGE: ${{ steps.docker-push.outputs.image }}"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
